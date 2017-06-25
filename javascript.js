@@ -1,9 +1,9 @@
-$(window).on("load", () => {
+$(".getWeatherInfo").on("click", () => {
   "use strict";
 
 // check if user has granted permission to access their location
-  if ("geolocation" in navigator) {
-    // getLocation ();
+  if (navigator.geolocation) {
+    getLocation ();
   } else {
     handleErr ();
     $(".weatherContainer").html("You haven't given permission for your currrent location to be disclosed. That's fine, but without knowing your location, we can't show you what the weather's like in your local area.");
@@ -20,6 +20,7 @@ function getLocation () {
     getLocalWeather(lat, long);
   };
 
+//  handle error
   const error = () => {
     handleErr ();
     $(".weatherContainer").html("Sorry, something went wrong when we tried to access your current location.");
@@ -46,11 +47,14 @@ function getLocalWeather (lat, long) {
       const weather = json.currently.summary;
       const temp = json.currently.temperature;
       const icon = json.currently.icon;
+
       $(".weather").html(weather);
       $(".temperature").html(temp + "°F");
-//    call function to change the image
-      changeImg(icon);
+
+//    add weather icon
+      addSkycon(icon);
     },
+//  handle error
     error: () => {
       handleErr ();
       $(".weatherContainer").html("Sorry, something went wrong with the API call");
@@ -59,8 +63,19 @@ function getLocalWeather (lat, long) {
 }
 
 // change img depending on API response
-function changeImg (icon) {
+// need to take into account that a skycon may already have been loaded by user, in that case
+// need to change it
+function addSkycon (icon) {
   "use strict";
+
+  const skycons = new Skycons({
+    "color": "black",
+    "resizeClear": true
+  });
+
+  skycons.add(document.getElementById("weatherIcon"), icon);
+
+  skycons.play();
 }
 
 // add event to button which switches between Celcius & Farenheit
@@ -76,11 +91,11 @@ $(".tempSwitch").on("click", () => {
    const temp = tempEle.html().slice(0, length - 2);
 
    if (type === "°F") {
-     const celcius = Math.round((((temp - 32) * 0.5556)) * 100);
-     tempEle.html(celcius + "°C");
+     const celcius = (temp - 32) * 0.5556;
+     tempEle.html(celcius.toFixed(2) + "°C");
    } else if (type === "°C") {
      const farenheit = (temp * 1.8) + 32;
-     tempEle.html(farenheit + "°F");
+     tempEle.html(farenheit.toFixed(2) + "°F");
    }
 
 });
