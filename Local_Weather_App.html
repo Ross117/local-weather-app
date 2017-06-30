@@ -12,31 +12,43 @@
 
   <div class="container-fluid">
 
-    <div class="weatherContainer">
-      <div class="weatherLabel">This is the weather in your local area:
-        <div class="weather"></div>
-      </div>
-      <div class="temperatureLabel">Temperature:
-        <div class="temperature"></div>
-      </div>
-    </div>
+  <div>
+    <h1 class="intro text-center">Welcome! Click the button below to find out what the weather's like where you are.</h1>
+  </div>
 
-    <button type="button" class="getWeatherInfo">What's the weather like in my local area?</button>
+  <br>
 
-    <br><br>
-    <div>
+  <div class="locationandtimeContainer">
+    <p class="text-center userLocation"></p>
+    <p class="text-center currentTime"</p>
+  </div>
+
+  <div class="weatherContainer">
+    <p class="text-center"><span class="weather"></span><span class="temperature"></span></p>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
       <canvas id="weatherIcon"></canvas>
     </div>
-    <br><br>
-
-    <button type="button" class="tempSwitch">Button to switch between Celcius and Farenheit</button> <br><br>
-
-    <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
-
   </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <button type="button" class="getWeatherInfo">Get my local weather</button>
+      <button type="button" class="tempSwitch">Switch to Celcius</button>
+    </div>
+  </div>
+
+  <br><br>
+
+  <p class="text-center"><a href="https://darksky.net/poweredby/">Powered by Dark Sky</a></p>
+
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://rawgit.com/darkskyapp/skycons/master/skycons.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6uPZcoLBFHVXdbVzS_SBK9h12bDrTPag&callback=initMap" async defer></script>
 <script src="javascript.js"></script>
 
 </body>
