@@ -12,39 +12,39 @@
 
   <div class="container-fluid">
 
-  <div>
-    <h1 class="intro text-center">Welcome! Click the button below to find out what the weather's like where you are.</h1>
-  </div>
-
-  <br>
-
-  <div class="locationandtimeContainer">
-    <p class="text-center userLocation"></p>
-    <p class="text-center currentTime"</p>
-  </div>
-
-  <div class="weatherContainer">
-    <p class="text-center"><span class="weather"></span><span class="temperature"></span></p>
-  </div>
-
-  <div class="row">
-    <div class="mx-auto">
-      <canvas id="weatherIcon"></canvas>
+    <div>
+      <h1 class="intro text-center">Welcome! Click the button below to find out what the weather's like where you are.</h1>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="mx-auto">
-      <button type="button" class="getWeatherInfo">Get my local weather</button>
-      <button type="button" class="tempSwitch">Switch to Celcius</button>
+    <br>
+
+    <div class="locationandtimeContainer">
+      <p class="text-center userLocation"></p>
+      <p class="text-center currentTime"></p>
     </div>
+
+    <div class="weatherContainer">
+      <p class="text-center"><span class="weather"></span> <span class="temperature"></span></p>
+    </div>
+
+    <div class="row">
+      <div class="mx-auto">
+        <canvas id="weatherIcon"></canvas>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="mx-auto">
+        <button type="button" class="getWeatherInfo btn btn-info">Get my local weather</button>
+        <button type="button" class="tempSwitch btn btn-info">Switch to Celcius</button>
+      </div>
+    </div>
+
+    <br><br>
+
+    <p class="text-center"><a href="https://darksky.net/poweredby/">Powered by Dark Sky</a></p>
+
   </div>
-
-  <br><br>
-
-  <p class="text-center"><a href="https://darksky.net/poweredby/">Powered by Dark Sky</a></p>
-
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://rawgit.com/darkskyapp/skycons/master/skycons.js"></script>

@@ -16,6 +16,9 @@ function getLocation () {
   const success = (pos) => {
     const lat = pos.coords.latitude;
     const lng = pos.coords.longitude;
+
+    $(".intro").html("This is what the weather's like where you are:");
+
 //  get current time
     $(".currentTime").html(new Date().toLocaleString('en-GB'));
 //  get the name of the user's location
@@ -44,15 +47,15 @@ function getLocation () {
 function getLocationName (lat, lng) {
   "use strict";
 
-  const geocoder = new google.maps.Geocoder;
+  const geocoder = new google.maps.Geocoder();
   const latlng = {lat: lat, lng: lng};
   const $userLocation = $(".userLocation");
 
   // make request to Google Maps Geocoding API to get the user's current location address
   geocoder.geocode({'location': latlng}, (results, status) => {
     if (status === 'OK') {
-      if (results[1]) {
-        $userLocation.html(results[1].formatted_address);
+      if (results[0]) {
+        $userLocation.html(results[0].formatted_address);
       } else {
         $userLocation.html("Sorry, we couldn't find the address of your current location.");
       }
@@ -74,7 +77,6 @@ function getLocalWeather (lat, lng) {
       const temp = json.currently.temperature;
       const icon = json.currently.icon;
 
-      $(".intro").html("This is what the weather's like where you are:");
       $(".weather").html(weather);
       $(".temperature").html(temp + "°F");
 
@@ -84,14 +86,13 @@ function getLocalWeather (lat, lng) {
 //  handle error
     error: () => {
       handleErr ();
-      $(".weatherContainer").html("Sorry, something went wrong with the API call");
+      $(".weatherContainer").html("Sorry, something went wrong. Please try again later.");
     }
   });
 }
 
-// change img depending on API response
-// need to take into account that a skycon may already have been loaded by user, in that case
-// need to change an existing icon, not just add a new one
+// change Skycon img depending on API response
+// What happens in user makes second API request, and Skycon changes? Any error?
 function addSkycon (icon) {
   "use strict";
 

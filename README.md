@@ -1,3 +1,5 @@
-A web app which shows the current state of the weather in the user's location. A Free Code Camp project. 
+A web page which shows the current state of the weather in the user's location, along with a weather icon. The user can switch the temperature between Farenheit and Celcius. Also shows the user's location, along with the current time and date. A Free Code Camp project.
 
-Currently a work in progress.
+Built using HTML, CSS, and JavaScript, along with the Bootstrap and jQuery libraries.
+
+Uses the Dark Sky and Google Maps APIs.
