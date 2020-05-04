@@ -71,7 +71,7 @@ function getLocalWeather (lat, lng) {
 // make call to API
   $.ajax({
 // use a proxy server to prevent CORS error
-    url: "https://thingproxy.freeboard.io/fetch/https://api.darksky.net/forecast/c40dcc41bb316dec59a0eb46699d013d/" + lat + "," + lng,
+    url: "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/c40dcc41bb316dec59a0eb46699d013d/" + lat + "," + lng,
     success: (json) => {
       const weather = json.currently.summary;
       const temp = json.currently.temperature;
